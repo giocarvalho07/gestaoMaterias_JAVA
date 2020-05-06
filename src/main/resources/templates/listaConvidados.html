@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+	<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width" />
+			<title>Gestão de Sala de Aula</title>
+			<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+			<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+			<!--Import Google Icon Font-->
+      		<link th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}" rel="stylesheet"/>
+      		<!--Import materialize.css-->
+      		<link th:type="@{text/css}" rel="stylesheet" th:href="@{materialize/css/materialize.min.css}"  media="screen,projection"/>
+      		<!--Let browser know website is optimized for mobile-->
+      		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      		<link th:type="@{text/css}" rel="stylesheet" th:href="@{static/convidado/convidado.css}"/>
+		</head>
+	<body>
+	<div class="container" >
+	
+
+    <div>
+    	
+    
+    		<h4>
+				Gestor de Sala de Aulas    		
+    		</h4>
+    
+    	 <form class="container col s12" method="post" th:object="${convidado}" th:action="@{/convidados}" style="margin: 20px 0">
+			<div class="row">
+				<div>
+					<input th:type="@{text}" class="col s4" placeholder="Nome da Materia" th:field="*{nomeMateria}"/>
+				</div>
+				<div>
+					<input th:type="@{text}" class="col s4" placeholder="Quant. Alunos" th:field="*{quantidadeAlunos}"/>
+				</div>
+				<button th:type="@{submit}" class="waves-effect waves-light btn col s3">
+					<i class="material-icons left small">add_circle_outline</i>Adicionar</button>
+			</div>
+		</form>
+   </div> 	
+		
+		<div>
+		
+			<table class="table striped">
+				<thead>
+					<tr>
+						<th>Nome da Materia</th>
+						<th>Quant. Alunos</th>
+					</tr>
+				</thead>
+			<tbody>
+				<tr th:each="convidado : ${convidados}">
+					<td th:text="${convidado.nomeMateria}"></td>
+					<td th:text="${convidado.quantidadeAlunos}"></td>
+				</tr>
+			</tbody>
+			</table>
+			
+				</div>
+		</div>
+		
+		
+		      <!--JavaScript at end of body for optimized loading-->
+      	<script th:type="@{text/javascript}" th:src="@{materialize/js/materialize.min.js}"></script>
+		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+		
+		
+	</body>
+</html>
